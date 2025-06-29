@@ -1,4 +1,6 @@
-﻿namespace Muonroi.BaseTemplate.API.Application.Commands.Login
+﻿
+
+namespace Muonroi.BaseTemplate.API.Application.Commands.Login
 {
     public class LoginCommand : IRequest<MResponse<LoginResponseModel>>
     {

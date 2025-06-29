@@ -1,24 +1,36 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <PackageType>Template</PackageType>
-    <PackageVersion>1.0.0</PackageVersion>
-    <PackageId>Muonroi.QuickShared.Template</PackageId>
-    <Title>Muonroi BaseTemplate Solution Template</Title>
-    <Authors>Muon roi</Authors>
-    <Description>Một template khởi động nhanh cho các ứng dụng ASP.NET Core theo kiến trúc Clean/Onion với các dự án API, Core, và Data.</Description>
-    <PackageTags>dotnet-template;aspnetcore;solution;clean-architecture;api</PackageTags>
+    <NoBuild>true</NoBuild>
+    <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PackageId>Muonroi.BaseTemplate</PackageId>
+    <Title>Muonroi.BaseTemplate</Title>
+    <Authors>Muon Roi</Authors>
+    <Product>BaseTemplate</Product>
+    <Description>Quick-start template for ASP.NET Core applications based on the Clean/Onion architecture with API, Core, and Data projects.</Description>
+    <Copyright>$(Authors)</Copyright>
+    <PackageProjectUrl>https://github.com/muonroi/Muonroi.BaseTemplate</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/muonroi/Muonroi.BaseTemplate</RepositoryUrl>
+    <PackageIcon>logo.jpg</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>dotnet-template; aspnetcore; clean-architecture; solution-template; starter-kit; boilerplate; webapi</PackageTags>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageType>Template</PackageType>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolders>content</ContentTargetFolders>
-    <NoWarn>$(NoWarn);NU5128</NoWarn>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/muonroi/Muonroi.BaseTemplate</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="**\*" Exclude="**\bin\**;**\obj\**;**\.vs\**;**\*.csproj" />
+    <None Include="README.md" Pack="true" PackagePath="\"/>
+    <None Include="LICENSE" Pack="true" PackagePath="\"/>
+    <None Include="images\logo.jpg" Pack="true" PackagePath="\"/>
+    <Content Include="**\*" Exclude="**\bin\**;**\obj\**;**\.vs\**" />
   </ItemGroup>
 
 </Project>
