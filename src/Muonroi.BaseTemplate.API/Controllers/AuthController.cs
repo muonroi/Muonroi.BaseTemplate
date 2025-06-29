@@ -1,10 +1,4 @@
-﻿
-
-
-
-
-
-namespace Muonroi.BaseTemplate.API.Controllers
+﻿namespace Muonroi.BaseTemplate.API.Controllers
 {
     public class AuthController(
     IMediator mediator,

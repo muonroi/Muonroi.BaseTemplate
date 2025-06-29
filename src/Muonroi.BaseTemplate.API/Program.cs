@@ -1,3 +1,6 @@
+
+
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 Assembly assembly = Assembly.GetExecutingAssembly();
 ConfigurationManager configuration = builder.Configuration;
