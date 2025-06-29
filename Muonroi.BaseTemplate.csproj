@@ -4,6 +4,7 @@
     <NoBuild>true</NoBuild>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+   
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -20,6 +21,9 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>dotnet-template; aspnetcore; clean-architecture; solution-template; starter-kit; boilerplate; webapi</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <AssemblyVersion>1.0.3</AssemblyVersion>
+    <Version>1.0.3</Version>
+    <FileVersion>1.0.3</FileVersion>
     <PackageType>Template</PackageType>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
@@ -29,8 +33,8 @@
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\"/>
     <None Include="LICENSE" Pack="true" PackagePath="\"/>
-    <None Include="images\logo.jpg" Pack="true" PackagePath="\"/>
-    <Content Include="**\*" Exclude="**\bin\**;**\obj\**;**\.vs\**" />
+    <None Include="images/logo.jpg" Pack="true" PackagePath="\"/>
+    <Content Include="**\*" Exclude="**\bin\**;**\obj\**;**\.vs\**;**\.git\**;**\.github\**;Muonroi.BaseTemplate.csproj" />
   </ItemGroup>
 
 </Project>
