@@ -19,10 +19,11 @@
     "ClassName": {
       "type": "parameter",
       "datatype": "text",
+      "shortName": "c",
       "replaces": "BaseTemplate",
       "fileRename": "BaseTemplate",
       "displayName": "Base Name for Classes",
-      "description": "Sets the base name for classes like DbContext, Service, etc.",
+      "description": "name of class: DbContext, Service, etc.",
       "defaultValue": "BaseTemplate"
     }
   }

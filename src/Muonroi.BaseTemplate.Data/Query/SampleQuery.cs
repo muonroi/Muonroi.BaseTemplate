@@ -1,6 +1,6 @@
-﻿using Muonroi.BaseTemplate.Core.Domain;
-using Muonroi.BaseTemplate.Core.Interfaces.Query;
-using Muonroi.BaseTemplate.Data.Persistence;
+﻿
+
+
 
 namespace Muonroi.BaseTemplate.Data.Query
 {
