@@ -1,0 +1,6 @@
+@Muonroi.BaseTemplate_HostAddress = http://localhost:5186
+
+GET {{Muonroi.BaseTemplate_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
