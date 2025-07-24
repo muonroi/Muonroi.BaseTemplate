@@ -15,6 +15,8 @@
         Auth_GetRoleUsers = 1L << 8,
         Auth_AssignRoleUser = 1L << 11,
         Auth_RemovePermissionFromRole = 1L << 12,
+        Sample_Create = 1L << 13,
+        Sample_GetAll = 1L << 14,
     }
 
 }

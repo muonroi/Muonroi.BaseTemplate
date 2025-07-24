@@ -2,8 +2,9 @@
 {
     public class AuthController(
     IMediator mediator,
-    IAuthService<Permission, BaseTemplateDbContext> authService)
-    : MAuthControllerBase<Permission, BaseTemplateDbContext>(authService)
+    IAuthService<Permission, BaseTemplateDbContext> authService,
+    IPermissionService<Permission, BaseTemplateDbContext> permissionService)
+    : MAuthControllerBase<Permission, BaseTemplateDbContext>(authService, permissionService)
     {
         [HttpPost("login")]
         [AllowAnonymous]

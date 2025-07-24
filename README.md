@@ -20,6 +20,8 @@ This template is built on .NET 9.0 and comes pre-configured with a suite of mode
 *   **FluentValidation:** Includes request validation using FluentValidation.
 *   **Localization Support:** Demonstrates localization for error messages with resource files for English (`en-US`) and Vietnamese (`vi-VN`).
 *   **Centralized Building Blocks:** Utilizes the `Muonroi.BuildingBlock` NuGet package to provide shared components and abstractions.
+*   **Service Discovery & Messaging:** Ready-to-use Consul registration, gRPC server setup and MassTransit message bus integration.
+*   **Multi-Tenant & Dynamic Permission:** Includes tenant context middleware and automatic permission synchronization.
 
 ## Project Structure
 

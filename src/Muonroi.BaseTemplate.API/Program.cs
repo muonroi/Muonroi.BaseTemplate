@@ -1,6 +1,3 @@
-
-
-
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 Assembly assembly = Assembly.GetExecutingAssembly();
 ConfigurationManager configuration = builder.Configuration;
@@ -24,12 +21,19 @@ try
     _ = services.RegisterServices(configuration);
     _ = services.SwaggerConfig(builder.Environment.ApplicationName);
     _ = services.AddScopeServices(typeof(BaseTemplateDbContext).Assembly);
-    _ = services.AddValidateBearerToken<MTokenInfo, Permission>(configuration);
+    _ = services.AddValidateBearerToken<BaseTemplateDbContext, MTokenInfo, Permission>(configuration);
     _ = services.AddDbContextConfigure<BaseTemplateDbContext, Permission>(configuration);
     _ = services.AddCors(configuration);
     _ = services.AddPermissionFilter<Permission>();
+    _ = services.AddDynamicPermission<BaseTemplateDbContext>();
+    _ = services.AddTenantContext(configuration);
+    services.AddGrpcServer();
+    _ = services.AddServiceDiscovery(configuration, builder.Environment);
+    _ = services.AddMessageBus(configuration, assembly);
     WebApplication app = builder.Build();
+    await app.UseServiceDiscoveryAsync(builder.Environment);
     _ = app.UseCors("MAllowDomains");
+    _ = app.UseMiddleware<TenantContextMiddleware>();
     _ = app.UseDefaultMiddleware<BaseTemplateDbContext, Permission>();
     _ = app.AddLocalization(assembly);
     _ = app.UseRouting();
