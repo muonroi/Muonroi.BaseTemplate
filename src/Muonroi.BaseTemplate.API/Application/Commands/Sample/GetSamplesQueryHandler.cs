@@ -1,3 +1,5 @@
+
+
 namespace Muonroi.BaseTemplate.API.Application.Commands.Sample
 {
     public class GetSamplesQueryHandler(ISampleQuery query)

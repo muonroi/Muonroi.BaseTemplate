@@ -1,4 +1,3 @@
-global using MediatR;
 global using Microsoft.EntityFrameworkCore;
 global using Muonroi.BaseTemplate.Core.Domain;
 global using Muonroi.BaseTemplate.Core.Interfaces.Query;
@@ -8,3 +7,4 @@ global using Muonroi.BuildingBlock.External;
 global using Muonroi.BuildingBlock.External.Default;
 global using Muonroi.BuildingBlock.External.Entity;
 global using Muonroi.BuildingBlock.External.SeedWorks;
+global using Muonroi.BuildingBlock.External.Mediator.Interfaces;

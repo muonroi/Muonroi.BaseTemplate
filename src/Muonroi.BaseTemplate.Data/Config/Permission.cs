@@ -17,6 +17,8 @@
         Auth_RemovePermissionFromRole = 1L << 12,
         Sample_Create = 1L << 13,
         Sample_GetAll = 1L << 14,
+        Notification_Create = 1L << 15,
+        Notification_GetAll = 1L << 16,
     }
 
 }

@@ -1,5 +1,5 @@
 # Muonroi.BaseTemplate
-[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/muonroi/Muonroi.BaseTemplate)
+[![Ask DeepWiki](https://raw.githubusercontent.com/muonroi/MuonroiBuildingBlock/main/src/Muonroi.BuildingBlock/Images/deep-wiki.png)](https://deepwiki.com/muonroi/Muonroi.BaseTemplate)
 
 This repository provides a .NET solution template designed to accelerate the development of ASP.NET Core applications. It is structured based on Clean/Onion Architecture principles, providing a solid foundation with separate projects for the API, Core (Domain), and Data (Infrastructure) layers.
 

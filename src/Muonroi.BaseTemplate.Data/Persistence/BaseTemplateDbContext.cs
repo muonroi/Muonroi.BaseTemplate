@@ -1,5 +1,9 @@
 ﻿
 
+
+
+
+
 namespace Muonroi.BaseTemplate.Data.Persistence
 {
     public class BaseTemplateDbContext : MDbContext

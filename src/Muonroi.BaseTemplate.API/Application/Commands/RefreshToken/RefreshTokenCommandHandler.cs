@@ -11,7 +11,7 @@
         {
             MResponse<RefreshTokenResponseModel> result = new();
 
-            if (string.IsNullOrEmpty(AuthContext.AccessToken))
+            if (string.IsNullOrEmpty(AuthContext?.AccessToken))
             {
                 result.AddErrorMessage("InvalidCredentials");
                 return result;
