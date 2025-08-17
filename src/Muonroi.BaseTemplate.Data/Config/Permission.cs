@@ -19,6 +19,7 @@
         Sample_GetAll = 1L << 14,
         Notification_Create = 1L << 15,
         Notification_GetAll = 1L << 16,
+        Container_Create = 1L << 17,
     }
 
 }

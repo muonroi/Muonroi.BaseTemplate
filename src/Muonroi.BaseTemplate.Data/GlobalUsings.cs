@@ -8,3 +8,5 @@ global using Muonroi.BuildingBlock.External.Default;
 global using Muonroi.BuildingBlock.External.Entity;
 global using Muonroi.BuildingBlock.External.SeedWorks;
 global using Muonroi.BuildingBlock.External.Mediator.Interfaces;
+global using Microsoft.Extensions.Logging;
+global using Microsoft.EntityFrameworkCore.Diagnostics;

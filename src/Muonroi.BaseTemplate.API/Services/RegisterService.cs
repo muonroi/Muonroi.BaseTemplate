@@ -4,7 +4,9 @@
     {
         public static IServiceCollection RegisterServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // Add your custom DI here
+            services
+                .AddRuleEngine()
+                .AddRulesFromAssemblies(typeof(RegisterService).Assembly);
             return services;
         }
     }
