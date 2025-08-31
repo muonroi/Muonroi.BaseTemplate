@@ -1,5 +1,3 @@
-
-
 namespace Muonroi.BaseTemplate.API.Rules;
 
 [RuleGroup("containers")]
@@ -17,9 +15,7 @@ public sealed class ContainerExistenceRule(IContainerExistenceGrpcClient grpcCli
     public RuleType Type => RuleType.Validation;
 
     public Task ExecuteAsync(CreateContainerCommand context, CancellationToken cancellationToken = default)
-    {
-        return Task.CompletedTask;
-    }
+        => Task.CompletedTask;
 
     public async Task<RuleResult> EvaluateAsync(CreateContainerCommand context, FactBag facts, CancellationToken cancellationToken = default)
     {

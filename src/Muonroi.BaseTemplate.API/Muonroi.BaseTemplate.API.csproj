@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Muonroi.BuildingBlock" Version="1.6.7.1" />
+    <!--<PackageReference Include="Muonroi.BuildingBlock" Version="1.6.7" />-->
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+    <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="8.4.1" />
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />
+    <PackageReference Include="Serilog.Enrichers.Thread" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\MuonroiBuildingBlock\src\Muonroi.BuildingBlock\Muonroi.BuildingBlock.csproj" />
     <ProjectReference Include="..\Muonroi.BaseTemplate.Core\Muonroi.BaseTemplate.Core.csproj" />
     <ProjectReference Include="..\Muonroi.BaseTemplate.Data\Muonroi.BaseTemplate.Data.csproj" />
   </ItemGroup>

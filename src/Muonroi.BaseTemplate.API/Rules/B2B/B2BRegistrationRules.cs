@@ -1,4 +1,4 @@
-
+using Muonroi.RuleEngine.Abstractions;
 
 namespace Muonroi.BaseTemplate.API.Rules.B2B;
 
@@ -23,10 +23,10 @@ public interface IIndustryClassifier
 }
 
 [RuleGroup("b2b-registration")]
-public sealed class TaxCodeExistsRule(ITaxAuthorityClient client) : IRule<B2BRegistrationContext>
+public sealed class TaxCodeExistsRule : IRule<B2BRegistrationContext>
 {
-    private readonly ITaxAuthorityClient _client = client;
-
+    private readonly ITaxAuthorityClient _client;
+    public TaxCodeExistsRule(ITaxAuthorityClient client) => _client = client;
     public string Name => "TaxCodeExists";
     public IEnumerable<Type> Dependencies => Array.Empty<Type>();
 
@@ -37,9 +37,7 @@ public sealed class TaxCodeExistsRule(ITaxAuthorityClient client) : IRule<B2BReg
     public RuleType Type => RuleType.Validation;
 
     public Task ExecuteAsync(B2BRegistrationContext context, CancellationToken cancellationToken = default)
-    {
-        return Task.CompletedTask;
-    }
+        => Task.CompletedTask;
 
     public async Task<RuleResult> EvaluateAsync(B2BRegistrationContext context, FactBag facts, CancellationToken cancellationToken = default)
     {
@@ -50,23 +48,21 @@ public sealed class TaxCodeExistsRule(ITaxAuthorityClient client) : IRule<B2BReg
 }
 
 [RuleGroup("b2b-registration")]
-public sealed class CompanyInfoMatchRule(ITaxAuthorityClient client) : IRule<B2BRegistrationContext>
+public sealed class CompanyInfoMatchRule : IRule<B2BRegistrationContext>
 {
-    private readonly ITaxAuthorityClient _client = client;
-
+    private readonly ITaxAuthorityClient _client;
+    public CompanyInfoMatchRule(ITaxAuthorityClient client) => _client = client;
     public string Name => "CompanyInfoMatch";
-    public IEnumerable<Type> Dependencies => [typeof(TaxCodeExistsRule)];
+    public IEnumerable<Type> Dependencies => new[] { typeof(TaxCodeExistsRule) };
 
     public string Code => nameof(CompanyInfoMatchRule);
     public int Order => 0;
-    public IReadOnlyList<string> DependsOn => [nameof(TaxCodeExistsRule)];
+    public IReadOnlyList<string> DependsOn => new[] { nameof(TaxCodeExistsRule) };
     public HookPoint HookPoint => HookPoint.BeforeRule;
     public RuleType Type => RuleType.Validation;
 
     public Task ExecuteAsync(B2BRegistrationContext context, CancellationToken cancellationToken = default)
-    {
-        return Task.CompletedTask;
-    }
+        => Task.CompletedTask;
 
     public async Task<RuleResult> EvaluateAsync(B2BRegistrationContext context, FactBag facts, CancellationToken cancellationToken = default)
     {
@@ -81,61 +77,57 @@ public sealed class CompanyInfoMatchRule(ITaxAuthorityClient client) : IRule<B2B
 }
 
 [RuleGroup("b2b-registration")]
-public sealed class BlacklistRule(IFraudCheckClient client) : IRule<B2BRegistrationContext>
+public sealed class BlacklistRule : IRule<B2BRegistrationContext>
 {
-    private readonly IFraudCheckClient _client = client;
-
+    private readonly IFraudCheckClient _client;
+    public BlacklistRule(IFraudCheckClient client) => _client = client;
     public string Name => "Blacklist";
-    public IEnumerable<Type> Dependencies => [typeof(CompanyInfoMatchRule)];
+    public IEnumerable<Type> Dependencies => new[] { typeof(CompanyInfoMatchRule) };
 
     public string Code => nameof(BlacklistRule);
     public int Order => 0;
-    public IReadOnlyList<string> DependsOn => [nameof(CompanyInfoMatchRule)];
+    public IReadOnlyList<string> DependsOn => new[] { nameof(CompanyInfoMatchRule) };
     public HookPoint HookPoint => HookPoint.BeforeRule;
     public RuleType Type => RuleType.Validation;
 
     public Task ExecuteAsync(B2BRegistrationContext context, CancellationToken cancellationToken = default)
-    {
-        return Task.CompletedTask;
-    }
+        => Task.CompletedTask;
 
     public async Task<RuleResult> EvaluateAsync(B2BRegistrationContext context, FactBag facts, CancellationToken cancellationToken = default)
     {
-        if (!facts.TryGet<CompanyInfo>("company_info", out CompanyInfo? info))
+        if (!facts.TryGet<CompanyInfo>("company_info", out var info))
         {
             return RuleResult.Failure("Missing company info");
         }
-        bool blacklisted = await _client.IsBlacklistedAsync(info!.TaxCode, cancellationToken);
+        bool blacklisted = await _client.IsBlacklistedAsync(info.TaxCode, cancellationToken);
         return blacklisted ? RuleResult.Failure("Company is blacklisted") : RuleResult.Passed();
     }
 }
 
 [RuleGroup("b2b-registration")]
-public sealed class IndustryRestrictionRule(IIndustryClassifier client) : IRule<B2BRegistrationContext>
+public sealed class IndustryRestrictionRule : IRule<B2BRegistrationContext>
 {
-    private readonly IIndustryClassifier _client = client;
-
+    private readonly IIndustryClassifier _client;
+    public IndustryRestrictionRule(IIndustryClassifier client) => _client = client;
     public string Name => "IndustryRestriction";
-    public IEnumerable<Type> Dependencies => [typeof(CompanyInfoMatchRule)];
+    public IEnumerable<Type> Dependencies => new[] { typeof(CompanyInfoMatchRule) };
 
     public string Code => nameof(IndustryRestrictionRule);
     public int Order => 0;
-    public IReadOnlyList<string> DependsOn => [nameof(CompanyInfoMatchRule)];
+    public IReadOnlyList<string> DependsOn => new[] { nameof(CompanyInfoMatchRule) };
     public HookPoint HookPoint => HookPoint.BeforeRule;
     public RuleType Type => RuleType.Validation;
 
     public Task ExecuteAsync(B2BRegistrationContext context, CancellationToken cancellationToken = default)
-    {
-        return Task.CompletedTask;
-    }
+        => Task.CompletedTask;
 
     public async Task<RuleResult> EvaluateAsync(B2BRegistrationContext context, FactBag facts, CancellationToken cancellationToken = default)
     {
-        if (!facts.TryGet<CompanyInfo>("company_info", out CompanyInfo? info))
+        if (!facts.TryGet<CompanyInfo>("company_info", out var info))
         {
             return RuleResult.Failure("Missing company info");
         }
-        bool restricted = await _client.IsRestrictedAsync(info!.IndustryCode, cancellationToken);
+        bool restricted = await _client.IsRestrictedAsync(info.IndustryCode, cancellationToken);
         return restricted ? RuleResult.Failure("Industry is restricted") : RuleResult.Passed();
     }
 }

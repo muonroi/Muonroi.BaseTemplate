@@ -1,5 +1,8 @@
-﻿namespace Muonroi.BaseTemplate.API.Controllers
+﻿
+
+namespace Muonroi.BaseTemplate.API.Controllers
 {
+    [ApiVersion("1")]
     public class AuthController(
     IMediator mediator,
     IAuthService<Permission, BaseTemplateDbContext> authService,

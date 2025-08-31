@@ -21,6 +21,7 @@ This template is built on .NET 9.0 and comes pre-configured with a suite of mode
 *   **Localization Support:** Demonstrates localization for error messages with resource files for English (`en-US`) and Vietnamese (`vi-VN`).
 *   **Centralized Building Blocks:** Utilizes the `Muonroi.BuildingBlock` NuGet package to provide shared components and abstractions.
 *   **Service Discovery & Messaging:** Ready-to-use Consul registration, gRPC server setup and Kafka (MassTransit) integration.
+    Features are toggleable via `FeatureFlags`.
 *   **Multi‑Tenancy & Dynamic Permission:** TenantContext middleware, default filters, and automatic permission synchronization.
 
 ## Project Structure
@@ -85,6 +86,15 @@ The application's behavior can be configured through `appsettings.Development.js
 *   `MessageBusConfigs`: Kafka bus (host/topic/groupId) via BuildingBlock integration.
 *   `ConsulConfigs`: Service discovery registration + health checks.
 *   `GrpcServices`: Sample outbound gRPC endpoints.
+*   `FeatureFlags`: Enable/disable optional subsystems at startup.
+    ```json
+    "FeatureFlags": {
+      "UseGrpc": true,
+      "UseServiceDiscovery": true,
+      "UseMessageBus": false,
+      "UseBackgroundJobs": false
+    }
+    ```
 *   `PaginationConfigs`, `ResourceSetting`, `SecretKey`, `EnableEncryption`: auxiliary settings used by the blocks.
 
 See the full documentation: ../../docs/introduction.md and grouped guides under ../../docs/.

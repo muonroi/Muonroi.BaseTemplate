@@ -6,18 +6,16 @@ public sealed class ContainerValidationRule(IContainerValidationApiClient apiCli
     private readonly IContainerValidationApiClient _apiClient = apiClient;
 
     public string Name => "ContainerValidation";
-    public IEnumerable<Type> Dependencies => [typeof(ContainerExistenceRule)];
+    public IEnumerable<Type> Dependencies => new[] { typeof(ContainerExistenceRule) };
 
     public string Code => nameof(ContainerValidationRule);
     public int Order => 0;
-    public IReadOnlyList<string> DependsOn => [nameof(ContainerExistenceRule)];
+    public IReadOnlyList<string> DependsOn => new[] { nameof(ContainerExistenceRule) };
     public HookPoint HookPoint => HookPoint.BeforeRule;
     public RuleType Type => RuleType.Validation;
 
     public Task ExecuteAsync(CreateContainerCommand context, CancellationToken cancellationToken = default)
-    {
-        return Task.CompletedTask;
-    }
+        => Task.CompletedTask;
 
     public async Task<RuleResult> EvaluateAsync(CreateContainerCommand context, FactBag facts, CancellationToken cancellationToken = default)
     {
