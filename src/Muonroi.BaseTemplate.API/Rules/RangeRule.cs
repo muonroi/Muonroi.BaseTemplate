@@ -4,11 +4,11 @@ namespace Muonroi.BaseTemplate.API.Rules;
 public sealed class RangeRule : IRule<int>
 {
     public string Name => "Range";
-    public IEnumerable<Type> Dependencies => new[] { typeof(PositiveRule) };
+    public IEnumerable<Type> Dependencies => [typeof(PositiveRule)];
 
     public string Code => nameof(RangeRule);
     public int Order => 0;
-    public IReadOnlyList<string> DependsOn => new[] { nameof(PositiveRule) };
+    public IReadOnlyList<string> DependsOn => [nameof(PositiveRule)];
     public HookPoint HookPoint => HookPoint.BeforeRule;
     public RuleType Type => RuleType.Validation;
 

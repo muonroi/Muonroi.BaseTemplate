@@ -1,9 +1,5 @@
 
 
-
-
-
-
 namespace Muonroi.BaseTemplate.API.Controllers;
 
 public class RulesController(IMediator mediator, ILogger logger, IMapper mapper)

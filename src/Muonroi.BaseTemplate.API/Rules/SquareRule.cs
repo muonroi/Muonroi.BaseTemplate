@@ -4,11 +4,11 @@ namespace Muonroi.BaseTemplate.API.Rules;
 public sealed class SquareRule : IRule<int>
 {
     public string Name => "Square";
-    public IEnumerable<Type> Dependencies => new[] { typeof(RangeRule), typeof(EvenRule) };
+    public IEnumerable<Type> Dependencies => [typeof(RangeRule), typeof(EvenRule)];
 
     public string Code => nameof(SquareRule);
     public int Order => 0;
-    public IReadOnlyList<string> DependsOn => new[] { nameof(RangeRule), nameof(EvenRule) };
+    public IReadOnlyList<string> DependsOn => [nameof(RangeRule), nameof(EvenRule)];
     public HookPoint HookPoint => HookPoint.BeforeRule;
     public RuleType Type => RuleType.Business;
 

@@ -1,7 +1,7 @@
 # Muonroi.BaseTemplate
 [![Ask DeepWiki](https://raw.githubusercontent.com/muonroi/MuonroiBuildingBlock/main/src/Muonroi.BuildingBlock/Images/deep-wiki.png)](https://deepwiki.com/muonroi/Muonroi.BaseTemplate)
 
-This repository provides a .NET solution template designed to accelerate the development of ASP.NET Core applications. It is structured based on Clean/Onion Architecture principles, providing a solid foundation with separate projects for the API, Core (Domain), and Data (Infrastructure) layers.
+This repository provides a .NET solution template designed to accelerate the development of ASP.NET Core applications. It builds directly on the Muonroi.BuildingBlock library and follows Clean/Onion Architecture principles, providing a solid foundation with separate projects for the API, Core (Domain), and Data (Infrastructure) layers.
 
 This template is built on .NET 9.0 and comes pre-configured with a suite of modern tools and patterns to support building robust and scalable web APIs.
 
@@ -13,15 +13,15 @@ This template is built on .NET 9.0 and comes pre-configured with a suite of mode
     *   **Core:** Contains domain entities, interfaces, and core business logic.
     *   **Data:** Implements data access and other infrastructure concerns.
 *   **CQRS with MediatR:** Implements the Command Query Responsibility Segregation pattern using the MediatR library for clean and decoupled application logic.
-*   **Authentication & Authorization:** Includes a pre-built JWT-based authentication system with endpoints for login and token refresh. It also features a flexible, enum-based permission system (`Permission.cs`).
+*   **Authentication & Authorization:** Uses Muonroi.BuildingBlock for JWT validation, permission filters, and dynamic permission sync. Enum-based permission system (`Permission.cs`).
 *   **Entity Framework Core:** Configured for data persistence with a `DbContext` and repository pattern implementation.
-*   **Structured Logging with Serilog:** Integrated Serilog for powerful and configurable logging, with sinks for the console and Elasticsearch.
+*   **Structured Logging with Serilog:** Integrated via Muonroi.BuildingBlock helpers, with console sink by default (Elasticsearch optional).
 *   **Dependency Injection:** Properly configured using built-in .NET DI and supports Autofac.
 *   **FluentValidation:** Includes request validation using FluentValidation.
 *   **Localization Support:** Demonstrates localization for error messages with resource files for English (`en-US`) and Vietnamese (`vi-VN`).
 *   **Centralized Building Blocks:** Utilizes the `Muonroi.BuildingBlock` NuGet package to provide shared components and abstractions.
-*   **Service Discovery & Messaging:** Ready-to-use Consul registration, gRPC server setup and MassTransit message bus integration.
-*   **Multi-Tenant & Dynamic Permission:** Includes tenant context middleware and automatic permission synchronization.
+*   **Service Discovery & Messaging:** Ready-to-use Consul registration, gRPC server setup and Kafka (MassTransit) integration.
+*   **Multi‑Tenancy & Dynamic Permission:** TenantContext middleware, default filters, and automatic permission synchronization.
 
 ## Project Structure
 
@@ -72,16 +72,22 @@ dotnet new mr-base-sln -n YourNewProjectName -C MyCoreName
 
 This would generate files like `MyCoreNameDbContext.cs`, `MyCoreNameRepository.cs`, etc.
 
-## Configuration
+## Configuration (aligns with Muonroi.BuildingBlock)
 
 The application's behavior can be configured through `appsettings.Development.json` and `appsettings.Production.json`. Key settings include:
 
-*   **`DatabaseConfigs`**: Set the `DbType` and connection strings.
-*   **`TokenConfigs`**: Configure JWT issuer, audience, and keys for authentication.
-*   **`Serilog`**: Configure logging levels and sinks (e.g., Elasticsearch nodes).
-*   **`SecretKey`**: Provide a secret key used for encrypting sensitive configuration values.
-*   **`MAllowDomains`**: Configure CORS origins.
-*   **`RedisConfigs`**: Set up connection details for Redis caching.
+*   `DatabaseConfigs`: Set `DbType` (Sqlite/SqlServer/Postgres) and connection strings.
+*   `TokenConfigs`: JWT issuer/audience/keys; supports RSA (UseRsa=true) as in the template.
+*   `MultiTenantConfigs`: Toggle multi‑tenancy (Enabled=true). For default tenant fallback, use `TenantConfigs:DefaultTenant`.
+*   `Serilog`: Logging levels and sinks. Console by default; add Elasticsearch if needed.
+*   `MAllowDomains`: CORS origins.
+*   `RedisConfigs`: Redis caching; set `AllMethodsEnableCache` for global cache policy.
+*   `MessageBusConfigs`: Kafka bus (host/topic/groupId) via BuildingBlock integration.
+*   `ConsulConfigs`: Service discovery registration + health checks.
+*   `GrpcServices`: Sample outbound gRPC endpoints.
+*   `PaginationConfigs`, `ResourceSetting`, `SecretKey`, `EnableEncryption`: auxiliary settings used by the blocks.
+
+See the full documentation: ../../docs/introduction.md and grouped guides under ../../docs/.
 
 ## License
 
