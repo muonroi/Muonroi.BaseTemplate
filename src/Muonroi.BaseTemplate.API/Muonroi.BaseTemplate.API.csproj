@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!--<PackageReference Include="Muonroi.BuildingBlock" Version="1.6.7" />-->
+    <PackageReference Include="Muonroi.BuildingBlock" Version="1.6.7" />
+    <PackageReference Include="Muonroi.RuleEngine.Abstractions" Version="1.0.0" />
+    <PackageReference Include="Muonroi.RuleEngine.Core" Version="1.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
     <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="8.4.1" />
@@ -20,9 +22,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\MuonroiBuildingBlock\src\Muonroi.BuildingBlock\Muonroi.BuildingBlock.csproj" />
     <ProjectReference Include="..\Muonroi.BaseTemplate.Core\Muonroi.BaseTemplate.Core.csproj" />
     <ProjectReference Include="..\Muonroi.BaseTemplate.Data\Muonroi.BaseTemplate.Data.csproj" />
+  </ItemGroup>
+
+  <!-- Copy rules to output so RulesEngineService can load login workflow -->
+  <ItemGroup>
+    <Content Update="rules\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,3 @@
-
-
-
 namespace Muonroi.BaseTemplate.Data.Interceptors;
 
 public sealed class AuditSaveChangesInterceptor(ILogger<AuditSaveChangesInterceptor> logger) : SaveChangesInterceptor

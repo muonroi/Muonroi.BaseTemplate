@@ -3,7 +3,7 @@
     public class RefreshTokenCommandHandler(
         MAuthenticateInfoContext tokenInfo,
         IAuthenticateRepository authenticateRepository,
-        Serilog.ILogger logger,
+        ILogger logger,
         IMJsonSerializeService jsonSerializeService,
         IMDateTimeService mDateTimeService) : MBaseHandler(logger, tokenInfo, jsonSerializeService, mDateTimeService), IRequestHandler<RefreshTokenCommand, MResponse<RefreshTokenResponseModel>>
     {

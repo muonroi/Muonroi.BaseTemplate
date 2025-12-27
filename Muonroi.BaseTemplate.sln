@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muonroi.BaseTemplate.Core",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muonroi.BaseTemplate.Data", "src\Muonroi.BaseTemplate.Data\Muonroi.BaseTemplate.Data.csproj", "{5CBA2D71-ACEA-430D-8F60-827DE4F03526}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muonroi.BuildingBlock", "..\MuonroiBuildingBlock\src\Muonroi.BuildingBlock\Muonroi.BuildingBlock.csproj", "{70638BA2-BF0C-FA8F-18B3-25CE28EC4964}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,18 +57,6 @@ Global
 		{5CBA2D71-ACEA-430D-8F60-827DE4F03526}.Release|x64.Build.0 = Release|Any CPU
 		{5CBA2D71-ACEA-430D-8F60-827DE4F03526}.Release|x86.ActiveCfg = Release|Any CPU
 		{5CBA2D71-ACEA-430D-8F60-827DE4F03526}.Release|x86.Build.0 = Release|Any CPU
-		{70638BA2-BF0C-FA8F-18B3-25CE28EC4964}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70638BA2-BF0C-FA8F-18B3-25CE28EC4964}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70638BA2-BF0C-FA8F-18B3-25CE28EC4964}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{70638BA2-BF0C-FA8F-18B3-25CE28EC4964}.Debug|x64.Build.0 = Debug|Any CPU
-		{70638BA2-BF0C-FA8F-18B3-25CE28EC4964}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{70638BA2-BF0C-FA8F-18B3-25CE28EC4964}.Debug|x86.Build.0 = Debug|Any CPU
-		{70638BA2-BF0C-FA8F-18B3-25CE28EC4964}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70638BA2-BF0C-FA8F-18B3-25CE28EC4964}.Release|Any CPU.Build.0 = Release|Any CPU
-		{70638BA2-BF0C-FA8F-18B3-25CE28EC4964}.Release|x64.ActiveCfg = Release|Any CPU
-		{70638BA2-BF0C-FA8F-18B3-25CE28EC4964}.Release|x64.Build.0 = Release|Any CPU
-		{70638BA2-BF0C-FA8F-18B3-25CE28EC4964}.Release|x86.ActiveCfg = Release|Any CPU
-		{70638BA2-BF0C-FA8F-18B3-25CE28EC4964}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +65,5 @@ Global
 		{1801D0D9-80E3-461A-9C56-0264BE479179} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{421475ED-917E-4ADD-A065-EF9A76C96F16} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{5CBA2D71-ACEA-430D-8F60-827DE4F03526} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
-		{70638BA2-BF0C-FA8F-18B3-25CE28EC4964} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 	EndGlobalSection
 EndGlobal

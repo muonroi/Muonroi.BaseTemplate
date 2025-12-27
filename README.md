@@ -1,104 +1,239 @@
 # Muonroi.BaseTemplate
+
 [![Ask DeepWiki](https://raw.githubusercontent.com/muonroi/MuonroiBuildingBlock/main/src/Muonroi.BuildingBlock/Images/deep-wiki.png)](https://deepwiki.com/muonroi/Muonroi.BaseTemplate)
 
-This repository provides a .NET solution template designed to accelerate the development of ASP.NET Core applications. It builds directly on the Muonroi.BuildingBlock library and follows Clean/Onion Architecture principles, providing a solid foundation with separate projects for the API, Core (Domain), and Data (Infrastructure) layers.
+A .NET solution template for building ASP.NET Core applications using Clean/Onion Architecture with the Muonroi.BuildingBlock library.
 
-This template is built on .NET 9.0 and comes pre-configured with a suite of modern tools and patterns to support building robust and scalable web APIs.
-
-## Features
-
-*   **.NET Solution Template:** Easily create new projects using `dotnet new`.
-*   **Clean Architecture:** A well-organized structure separating concerns into distinct layers:
-    *   **API:** Handles presentation logic, controllers, and API endpoints.
-    *   **Core:** Contains domain entities, interfaces, and core business logic.
-    *   **Data:** Implements data access and other infrastructure concerns.
-*   **CQRS with MediatR:** Implements the Command Query Responsibility Segregation pattern using the MediatR library for clean and decoupled application logic.
-*   **Authentication & Authorization:** Uses Muonroi.BuildingBlock for JWT validation, permission filters, and dynamic permission sync. Enum-based permission system (`Permission.cs`).
-*   **Entity Framework Core:** Configured for data persistence with a `DbContext` and repository pattern implementation.
-*   **Structured Logging with Serilog:** Integrated via Muonroi.BuildingBlock helpers, with console sink by default (Elasticsearch optional).
-*   **Dependency Injection:** Properly configured using built-in .NET DI and supports Autofac.
-*   **FluentValidation:** Includes request validation using FluentValidation.
-*   **Localization Support:** Demonstrates localization for error messages with resource files for English (`en-US`) and Vietnamese (`vi-VN`).
-*   **Centralized Building Blocks:** Utilizes the `Muonroi.BuildingBlock` NuGet package to provide shared components and abstractions.
-*   **Service Discovery & Messaging:** Ready-to-use Consul registration, gRPC server setup and Kafka (MassTransit) integration.
-    Features are toggleable via `FeatureFlags`.
-*   **Multi‑Tenancy & Dynamic Permission:** TenantContext middleware, default filters, and automatic permission synchronization.
-
-## Project Structure
-
-The solution is organized into the following projects:
-
-```
-└── src/
-    ├── Muonroi.BaseTemplate.API/   # Presentation Layer (API endpoints, Commands/Queries, DI setup)
-    ├── Muonroi.BaseTemplate.Core/  # Domain Layer (Entities, Interfaces, Enums)
-    └── Muonroi.BaseTemplate.Data/  # Infrastructure Layer (DbContext, Repositories, Migrations)
-```
-
-*   `Muonroi.BaseTemplate.API`: Contains the ASP.NET Core Web API project. It hosts the controllers and is the entry point of the application. It depends on the Core and Data layers.
-*   `Muonroi.BaseTemplate.Core`: The core of the application. It contains domain entities (`SampleEntity`), business logic, and abstractions (interfaces) for repositories and other services. This project has no external dependencies on other layers.
-*   `Muonroi.BaseTemplate.Data`: Implements the interfaces defined in the Core layer. It contains the Entity Framework `DbContext`, repository implementations, and any other infrastructure-related code like database configurations.
-
-## Getting Started
-
-### Prerequisites
-
-*   [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) or later.
-
-### Installation
-
-To install the template from this repository, clone it and run the following command from the root directory:
+## Quick Start
 
 ```bash
+# 1. Install template
+dotnet new install Muonroi.BaseTemplate
+
+# 2. Create new project
+dotnet new mr-base-sln -n MyProject -C MyCore
+
+# 3. Setup
+cd MyProject
+dotnet restore
+
+# 4. Run migrations (optional)
+./scripts/ef.sh add InitialCreate
+./scripts/ef.sh update
+
+# 5. Run
+cd src/MyProject.API
+dotnet run
+```
+
+Open: `https://localhost:5001/swagger`
+
+## Prerequisites
+
+- [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) or later
+- (Optional) [EF Core CLI](https://docs.microsoft.com/en-us/ef/core/cli/dotnet): `dotnet tool install --global dotnet-ef`
+
+## Installation
+
+### From NuGet (recommended)
+
+```bash
+dotnet new install Muonroi.BaseTemplate
+```
+
+### From source
+
+```bash
+git clone https://github.com/muonroi/MuonroiBuildingBlock.git
+cd MuonroiBuildingBlock/src/Muonroi.Base.Template
 dotnet new install ./
 ```
 
-### Usage
-
-Once the template is installed, you can create a new solution using the following command. The short name for this template is `mr-base-sln`.
+### Verify installation
 
 ```bash
-dotnet new mr-base-sln -n YourNewProjectName
+dotnet new list | grep "mr-base-sln"
 ```
 
-This will create a new directory named `YourNewProjectName` with the complete solution structure.
+## Usage
 
-#### Customization
-
-The template allows you to specify a base name for classes like `DbContext`, which replaces `BaseTemplate` in the generated files. Use the `-C` or `--ClassName` parameter:
+### Create new project
 
 ```bash
-dotnet new mr-base-sln -n YourNewProjectName -C MyCoreName
+dotnet new mr-base-sln -n <ProjectName> [-C <ClassName>]
 ```
 
-This would generate files like `MyCoreNameDbContext.cs`, `MyCoreNameRepository.cs`, etc.
+| Parameter | Short | Description | Default |
+|-----------|-------|-------------|---------|
+| `--name` | `-n` | Solution/project name | (required) |
+| `--ClassName` | `-C` | Base name for classes (DbContext, etc.) | `BaseTemplate` |
 
-## Configuration (aligns with Muonroi.BuildingBlock)
+### Examples
 
-The application's behavior can be configured through `appsettings.Development.json` and `appsettings.Production.json`. Key settings include:
+```bash
+# Basic
+dotnet new mr-base-sln -n MyApp
 
-*   `DatabaseConfigs`: Set `DbType` (Sqlite/SqlServer/Postgres) and connection strings.
-*   `TokenConfigs`: JWT issuer/audience/keys; supports RSA (UseRsa=true) as in the template.
-*   `MultiTenantConfigs`: Toggle multi‑tenancy (Enabled=true). For default tenant fallback, use `TenantConfigs:DefaultTenant`.
-*   `Serilog`: Logging levels and sinks. Console by default; add Elasticsearch if needed.
-*   `MAllowDomains`: CORS origins.
-*   `RedisConfigs`: Redis caching; set `AllMethodsEnableCache` for global cache policy.
-*   `MessageBusConfigs`: Kafka bus (host/topic/groupId) via BuildingBlock integration.
-*   `ConsulConfigs`: Service discovery registration + health checks.
-*   `GrpcServices`: Sample outbound gRPC endpoints.
-*   `FeatureFlags`: Enable/disable optional subsystems at startup.
-    ```json
-    "FeatureFlags": {
-      "UseGrpc": true,
-      "UseServiceDiscovery": true,
-      "UseMessageBus": false,
-      "UseBackgroundJobs": false
+# With custom class name
+dotnet new mr-base-sln -n TruyenTM -C TruyenTM
+# Generates: TruyenTMDbContext, TruyenTMRepository, etc.
+```
+
+## Project Structure
+
+```
+MyProject/
+├── MyProject.sln
+├── scripts/
+│   └── ef.sh                    # Cross-platform migration helper
+├── src/
+│   ├── MyProject.API/           # Presentation Layer
+│   │   ├── appsettings.json
+│   │   ├── appsettings.Development.json
+│   │   ├── appsettings.Production.json
+│   │   ├── appsettings.Example.json   # Configuration reference
+│   │   ├── Program.cs
+│   │   ├── Controllers/
+│   │   └── Application/
+│   ├── MyProject.Core/          # Domain Layer
+│   │   ├── Entities/
+│   │   └── Interfaces/
+│   └── MyProject.Data/          # Infrastructure Layer
+│       ├── MyDbContext.cs
+│       └── Repositories/
+└── README.md
+```
+
+## Configuration
+
+### Supported Database Types
+
+| DbType | Connection String Key |
+|--------|----------------------|
+| `Sqlite` | `SqliteConnectionString` |
+| `SqlServer` | `SqlServerConnectionString` |
+| `MySql` | `MySqlConnectionString` |
+| `PostgreSql` | `PostgreSqlConnectionString` |
+| `MongoDb` | `MongoDbConnectionString` |
+
+### Example Configuration
+
+```json
+{
+  "DatabaseConfigs": {
+    "DbType": "Sqlite",
+    "ConnectionStrings": {
+      "SqliteConnectionString": "Data Source=app.db"
     }
-    ```
-*   `PaginationConfigs`, `ResourceSetting`, `SecretKey`, `EnableEncryption`: auxiliary settings used by the blocks.
+  },
+  "TokenConfigs": {
+    "Issuer": "https://localhost:5001",
+    "Audience": "https://localhost:5001",
+    "SigningKeys": "your-secret-key-minimum-32-characters!",
+    "UseRsa": false,
+    "ExpiryMinutes": 60
+  },
+  "EnableEncryption": false
+}
+```
 
-See the full documentation: ../../docs/introduction.md and grouped guides under ../../docs/.
+> See `appsettings.Example.json` for all available options with documentation.
+
+### Feature Flags
+
+Toggle optional features to reduce startup time:
+
+```json
+{
+  "FeatureFlags": {
+    "UseGrpc": false,
+    "UseServiceDiscovery": false,
+    "UseMessageBus": false,
+    "UseBackgroundJobs": false,
+    "UseEnsureCreatedFallback": true
+  }
+}
+```
+
+## Database Migrations
+
+### Using helper script (recommended)
+
+**Linux/macOS (or Git Bash on Windows):**
+```bash
+./scripts/ef.sh add InitialCreate
+./scripts/ef.sh update
+./scripts/ef.sh list
+./scripts/ef.sh help
+```
+
+**Windows Command Prompt/PowerShell:**
+```cmd
+scripts\ef add InitialCreate
+scripts\ef update
+scripts\ef list
+scripts\ef help
+```
+
+### Using dotnet ef directly
+
+```bash
+dotnet ef migrations add "InitialCreate" \
+    -p ./src/MyProject.Data \
+    --startup-project ./src/MyProject.API \
+    -o Persistence/Migrations
+
+dotnet ef database update \
+    -p ./src/MyProject.Data \
+    --startup-project ./src/MyProject.API
+```
+
+## Features
+
+- **Clean Architecture** - Separate layers: API, Core, Data
+- **CQRS with MediatR** - Command/Query separation
+- **Authentication & Authorization** - JWT, permissions, roles
+- **Entity Framework Core** - Multiple database support
+- **Structured Logging** - Serilog with Console/Elasticsearch
+- **Caching** - Memory, Redis, or Multi-level
+- **Multi-tenancy** - Data isolation by tenant
+- **Service Discovery** - Consul integration
+- **Message Bus** - Kafka/RabbitMQ via MassTransit
+- **Background Jobs** - Hangfire/Quartz
+
+## Documentation
+
+- [Template Quickstart Guide](../../docs/template-quickstart.md) - Detailed setup guide
+- [Architecture Overview](../../docs/architecture-overview.md)
+- [Appsettings Guide](../../docs/appsettings-guide.md)
+- [Auth Module Guide](../../docs/auth-module-guide.md)
+- [Permission Guide](../../docs/permission-guide.md)
+
+## Troubleshooting
+
+### "Connection string is not provided"
+
+Ensure `DbType` matches the connection string key:
+
+```json
+{
+  "DatabaseConfigs": {
+    "DbType": "MySql",  // Must match key below
+    "ConnectionStrings": {
+      "MySqlConnectionString": "..."  // ✓ Correct key
+    }
+  }
+}
+```
+
+### "The input is not a valid Base-64 string"
+
+Set `"EnableEncryption": false` in appsettings.
+
+### API slow on startup
+
+Disable unused features in `FeatureFlags`.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE.txt](LICENSE.txt) file for details.
+MIT License. See [LICENSE.txt](LICENSE.txt) for details.

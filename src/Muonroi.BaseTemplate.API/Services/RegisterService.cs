@@ -1,5 +1,3 @@
-﻿using Muonroi.RuleEngine.Core;
-
 namespace Muonroi.BaseTemplate.API.Services
 {
     public static class RegisterService

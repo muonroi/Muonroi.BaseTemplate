@@ -1,4 +1,6 @@
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Diagnostics;
+global using Microsoft.Extensions.Logging;
 global using Muonroi.BaseTemplate.Core.Domain;
 global using Muonroi.BaseTemplate.Core.Interfaces.Query;
 global using Muonroi.BaseTemplate.Core.Interfaces.Repository;
@@ -8,5 +10,3 @@ global using Muonroi.BuildingBlock.External.Default;
 global using Muonroi.BuildingBlock.External.Entity;
 global using Muonroi.BuildingBlock.External.SeedWorks;
 global using Muonroi.BuildingBlock.External.Mediator.Interfaces;
-global using Microsoft.Extensions.Logging;
-global using Microsoft.EntityFrameworkCore.Diagnostics;

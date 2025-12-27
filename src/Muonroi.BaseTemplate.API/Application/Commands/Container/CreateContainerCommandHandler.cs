@@ -1,5 +1,3 @@
-
-
 namespace Muonroi.BaseTemplate.API.Application.Commands.Container;
 
 public sealed class CreateContainerCommandHandler(RuleOrchestrator<CreateContainerCommand> orchestrator)

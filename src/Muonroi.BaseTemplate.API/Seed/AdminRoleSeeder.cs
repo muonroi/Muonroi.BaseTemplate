@@ -1,6 +1,5 @@
-
-
-
+using Muonroi.BuildingBlock.External.Entity;
+using Muonroi.BuildingBlock.External.Entity.Identity;
 
 namespace Muonroi.BaseTemplate.API.Seed;
 
@@ -32,7 +31,7 @@ public static class AdminRoleSeeder
             .Select(rp => rp.PermissionId)
             .ToListAsync()).ToHashSet();
 
-        List<MRolePermission> toAdd = [];
+        List<MRolePermission> toAdd = new();
         foreach (Guid pid in allPermIds)
         {
             if (!existing.Contains(pid))

@@ -1,5 +1,3 @@
-
-
 namespace Muonroi.BaseTemplate.API.Controllers;
 
 public class ContainerController(IMediator mediator, ILogger logger, IMapper mapper) : MControllerBase(mediator, logger, mapper)
