@@ -1,0 +1,9 @@
+{
+  "Rules": [
+    "ValidateLoginInfo",
+    "LoadUser",
+    "CheckAccountLock",
+    "VerifyPassword",
+    "GenerateToken"
+  ]
+}

@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <NoBuild>true</NoBuild>
+    <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+   
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PackageId>Muonroi.BaseTemplate</PackageId>
+    <Title>Muonroi.BaseTemplate</Title>
+    <Authors>Muon Roi</Authors>
+    <Product>BaseTemplate</Product>
+    <Description>Quick-start template for ASP.NET Core applications based on the Clean/Onion architecture with API, Core, and Data projects.</Description>
+    <Copyright>$(Authors)</Copyright>
+    <PackageProjectUrl>https://github.com/muonroi/Muonroi.BaseTemplate</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/muonroi/Muonroi.BaseTemplate</RepositoryUrl>
+    <PackageIcon>logo.jpg</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>dotnet-template; aspnetcore; clean-architecture; solution-template; starter-kit; boilerplate; webapi</PackageTags>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <AssemblyVersion>1.6.8</AssemblyVersion>
+    <Version>1.6.8</Version>
+    <FileVersion>1.6.8</FileVersion>
+    <PackageType>Template</PackageType>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>content</ContentTargetFolders>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
+    <None Include="LICENSE" Pack="true" PackagePath="\"/>
+    <None Include="images/logo.jpg" Pack="true" PackagePath="\"/>
+    <Content Include="**\*" Exclude="**\bin\**;**\obj\**;**\.vs\**;**\.git\**;**\.github\**;Muonroi.BaseTemplate.csproj" />
+  </ItemGroup>
+
+</Project>
