@@ -21,9 +21,9 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>dotnet-template; aspnetcore; clean-architecture; solution-template; starter-kit; boilerplate; webapi</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>1.6.13</AssemblyVersion>
-    <Version>1.6.13</Version>
-    <FileVersion>1.6.13</FileVersion>
+    <AssemblyVersion>1.6.14</AssemblyVersion>
+    <Version>1.6.14</Version>
+    <FileVersion>1.6.14</FileVersion>
     <PackageType>Template</PackageType>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>

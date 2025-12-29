@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Muonroi.BuildingBlock" Version="1.6.13" />
+    <PackageReference Include="Muonroi.BuildingBlock" Version="1.6.14" />
   </ItemGroup>
 
   <ItemGroup>
