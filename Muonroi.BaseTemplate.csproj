@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <NoBuild>true</NoBuild>
@@ -21,9 +21,9 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>dotnet-template; aspnetcore; clean-architecture; solution-template; starter-kit; boilerplate; webapi</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>1.6.9</AssemblyVersion>
-    <Version>1.6.9</Version>
-    <FileVersion>1.6.9</FileVersion>
+    <AssemblyVersion>1.6.10</AssemblyVersion>
+    <Version>1.6.10</Version>
+    <FileVersion>1.6.10</FileVersion>
     <PackageType>Template</PackageType>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
