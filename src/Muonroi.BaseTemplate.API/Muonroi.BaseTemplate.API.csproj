@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Muonroi.BuildingBlock" Version="1.6.12" />
-    <PackageReference Include="Muonroi.RuleEngine.Abstractions" Version="1.6.12" />
-    <PackageReference Include="Muonroi.RuleEngine.Core" Version="1.6.12" />
+    <PackageReference Include="Muonroi.BuildingBlock" Version="1.6.13" />
+    <PackageReference Include="Muonroi.RuleEngine.Abstractions" Version="1.6.13" />
+    <PackageReference Include="Muonroi.RuleEngine.Core" Version="1.6.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -34,6 +34,13 @@
   <!-- Copy rules to output so RulesEngineService can load login workflow -->
   <ItemGroup>
     <Content Update="rules\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- Copy RSA keys to output so JWT token validation can find them -->
+  <ItemGroup>
+    <Content Update="keys\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

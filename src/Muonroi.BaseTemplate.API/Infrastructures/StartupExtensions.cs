@@ -11,6 +11,9 @@ public static class StartupExtensions
         _ = services.AddApplication(assembly);
         _ = services.AddInfrastructure(configuration);
 
+        // ===== DATABASE (must be configured before DynamicPermission) =====
+        _ = services.AddDbContextConfigure<BaseTemplateDbContext, Permission>(configuration);
+
         // ===== PERMISSION & AUTHORIZATION =====
         services.AddSingleton<MUONROI.Permissioning.AppPermissionProvider>();
         services.AddSingleton<IPermissionProvider>(sp =>
@@ -25,9 +28,6 @@ public static class StartupExtensions
 
         // ===== AUTHENTICATION & TOKEN =====
         _ = services.AddValidateBearerToken<BaseTemplateDbContext, MTokenInfo, Permission>(configuration);
-
-        // ===== DATABASE =====
-        _ = services.AddDbContextConfigure<BaseTemplateDbContext, Permission>(configuration);
 
         // ===== CACHING =====
         // Caching is configured via AddInfrastructure() based on CacheConfigs section
