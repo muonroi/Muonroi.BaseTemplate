@@ -76,7 +76,7 @@ public static class StartupExtensions
         _ = app.UseRouting();
         _ = app.UseCors("MAllowDomains");
         _ = app.UseMiddleware<TenantContextMiddleware>();
-        _ = app.UseDefaultMiddleware<BaseTemplateDbContext, Permission>();
+        _ = app.UseDefaultMiddleware();
         _ = app.AddLocalization(assembly);
         _ = app.UseAuthentication();
         _ = app.UseAuthorization();
