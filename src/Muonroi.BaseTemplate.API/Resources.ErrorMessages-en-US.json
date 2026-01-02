@@ -1,0 +1,20 @@
+{
+  "UnhandledException": "An unhandled exception occurred while processing the request",
+  "InvalidCredentials": "Username or password is incorrect",
+  "PermissionNotFound": "Permission not found for this user",
+  "RoleAlreadyExists": "Role already exists",
+  "RoleNotFound": "Role not found",
+  "UserNotFound": "User not found",
+  "UserHasNoPermissions": "User has no permissions",
+  "AccountIsLocked": "Account is locked. Try again in {0} minutes",
+  "InvalidLoginInfo": "Invalid login information",
+  "UserAlreadyExists": "User already exists",
+  "UserAlreadyHasRole": "User already has this role",
+  "RoleAlreadyHasPermission": "Role already has this permission",
+  "RolePermissionNotFound": "Role permission not found",
+  "InvalidTokenValidity": "Invalid token validity",
+  "InvalidPassword": "Invalid password",
+  "InvalidUserName": "Invalid username",
+  "InvalidPasswordStrength": "Password does not meet strength requirements",
+  "InvalidEmailAddress": "Email address is not valid"
+}

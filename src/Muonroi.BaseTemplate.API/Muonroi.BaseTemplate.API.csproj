@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Muonroi.BuildingBlock" Version="1.6.16" />
-    <PackageReference Include="Muonroi.RuleEngine.Abstractions" Version="1.6.16" />
-    <PackageReference Include="Muonroi.RuleEngine.Core" Version="1.6.16" />
+    <PackageReference Include="Muonroi.BuildingBlock" Version="1.6.19" />
+    <PackageReference Include="Muonroi.RuleEngine.Abstractions" Version="1.6.19" />
+    <PackageReference Include="Muonroi.RuleEngine.Core" Version="1.6.19" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -41,6 +41,11 @@
   <!-- Copy RSA keys to output so JWT token validation can find them -->
   <ItemGroup>
     <None Include="keys\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <!-- Embed error messages resource files -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.ErrorMessages-*.json" />
   </ItemGroup>
 
 </Project>

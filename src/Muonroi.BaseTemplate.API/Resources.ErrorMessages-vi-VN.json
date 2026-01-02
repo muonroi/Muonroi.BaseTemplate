@@ -1,0 +1,20 @@
+{
+  "UnhandledException": "Đã xảy ra lỗi không mong muốn khi xử lý yêu cầu",
+  "InvalidCredentials": "Tên đăng nhập hoặc mật khẩu không đúng",
+  "PermissionNotFound": "Không tìm thấy quyền hạn cho người dùng này",
+  "RoleAlreadyExists": "Vai trò đã tồn tại",
+  "RoleNotFound": "Không tìm thấy vai trò",
+  "UserNotFound": "Không tìm thấy người dùng",
+  "UserHasNoPermissions": "Người dùng không có quyền hạn nào",
+  "AccountIsLocked": "Tài khoản đã bị khóa. Vui lòng thử lại sau {0} phút",
+  "InvalidLoginInfo": "Thông tin đăng nhập không hợp lệ",
+  "UserAlreadyExists": "Người dùng đã tồn tại",
+  "UserAlreadyHasRole": "Người dùng đã có vai trò này",
+  "RoleAlreadyHasPermission": "Vai trò đã có quyền hạn này",
+  "RolePermissionNotFound": "Không tìm thấy quyền hạn của vai trò",
+  "InvalidTokenValidity": "Token không hợp lệ",
+  "InvalidPassword": "Mật khẩu không hợp lệ",
+  "InvalidUserName": "Tên đăng nhập không hợp lệ",
+  "InvalidPasswordStrength": "Mật khẩu không đủ mạnh",
+  "InvalidEmailAddress": "Địa chỉ email không hợp lệ"
+}
