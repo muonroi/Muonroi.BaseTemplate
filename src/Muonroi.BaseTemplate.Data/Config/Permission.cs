@@ -1,5 +1,11 @@
 ﻿namespace Muonroi.BaseTemplate.Data.Config
 {
+    /// <summary>
+    /// Permission enum for the application.
+    /// IMPORTANT: Permission names must match database mpermissions.Name exactly.
+    /// Use underscores (_) instead of dots (.) in permission names.
+    /// Example: Use "Admin_Auth_Dashboard" not "admin.auth.dashboard"
+    /// </summary>
     [Flags]
     public enum Permission : long
     {
