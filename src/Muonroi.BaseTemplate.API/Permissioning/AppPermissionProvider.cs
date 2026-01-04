@@ -8,17 +8,19 @@ public class AppPermissionProvider : IPermissionProvider
     public IEnumerable<PermissionDefinition> GetPermissions()
     {
         // Administration group: dashboard + roles management
+        // IMPORTANT: Permission names must use underscores (_) not dots (.)
+        // They must match the Permission enum exactly
         yield return new PermissionDefinition
         {
             GroupName = "Administration",
             GroupDisplayName = "Administration",
             Permissions = new[]
             {
-                "admin.auth.dashboard",
-                "admin.roles.view",
-                "admin.roles.create",
-                "admin.roles.edit",
-                "admin.roles.users"
+                "Admin_Auth_Dashboard",
+                "Admin_Roles_View",
+                "Admin_Roles_Create",
+                "Admin_Roles_Edit",
+                "Admin_Roles_Users"
             }
         };
 
@@ -29,7 +31,7 @@ public class AppPermissionProvider : IPermissionProvider
             GroupDisplayName = "User Management",
             Permissions = new[]
             {
-                "users.manage"
+                "Users_Manage"
             }
         };
 
@@ -40,7 +42,7 @@ public class AppPermissionProvider : IPermissionProvider
             GroupDisplayName = "Rules",
             Permissions = new[]
             {
-                "rules.configure"
+                "Rules_Configure"
             }
         };
     }

@@ -75,7 +75,14 @@ public static class StartupExtensions
         await app.UseServiceDiscoveryAsync(builder.Environment);
         _ = app.UseRouting();
         _ = app.UseCors("MAllowDomains");
-        _ = app.UseMiddleware<TenantContextMiddleware>();
+
+        // Multi-tenant middleware (only if enabled)
+        var multiTenantEnabled = configuration.GetValue("MultiTenantConfigs:Enabled", false);
+        if (multiTenantEnabled)
+        {
+            _ = app.UseMiddleware<TenantContextMiddleware>();
+        }
+
         _ = app.UseDefaultMiddleware();
         _ = app.AddLocalization(assembly);
         _ = app.UseAuthentication();
