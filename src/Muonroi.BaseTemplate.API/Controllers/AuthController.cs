@@ -15,7 +15,7 @@
             CancellationToken cancellationToken)
         {
             // Delegate to mediator-based command while preserving base signature and route
-            MResponse<LoginResponseModel> result = await mediator.Send(new LoginCommand
+            var result = await mediator.Send(new LoginCommand
             {
                 Username = request.Username,
                 Password = request.Password
@@ -31,7 +31,7 @@
             CancellationToken cancellationToken)
         {
             // Use mediator command; handler reads tokens from context/validation as designed
-            MResponse<RefreshTokenResponseModel> result = await mediator.Send(new RefreshTokenCommand(), cancellationToken).ConfigureAwait(false);
+            var result = await mediator.Send(new RefreshTokenCommand(), cancellationToken).ConfigureAwait(false);
             return result.GetActionResult();
         }
     }

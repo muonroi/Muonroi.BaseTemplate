@@ -9,8 +9,8 @@ namespace Muonroi.BaseTemplate.API.Application.Commands.Sample
 
         public async Task<MResponse<IEnumerable<SampleDto>>> Handle(GetSamplesQuery request, CancellationToken cancellationToken)
         {
-            List<SampleEntity>? entities = await _query.GetAllAsync().ConfigureAwait(false);
-            IEnumerable<SampleDto> dtos = entities?.Select(e => new SampleDto { Id = e.Id, Name = e.Name }) ?? [];
+            var entities = await _query.GetAllAsync().ConfigureAwait(false);
+            var dtos = entities?.Select(e => new SampleDto { Id = e.Id, Name = e.Name }) ?? [];
             return new MResponse<IEnumerable<SampleDto>> { Result = dtos };
         }
     }

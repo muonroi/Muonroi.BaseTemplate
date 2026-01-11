@@ -4,11 +4,11 @@ namespace Muonroi.BaseTemplate.API.Rules;
 public sealed class EvenRule : IRule<int>
 {
     public string Name => "Even";
-    public IEnumerable<Type> Dependencies => new[] { typeof(PositiveRule) };
+    public IEnumerable<Type> Dependencies => [typeof(PositiveRule)];
 
     public string Code => nameof(EvenRule);
     public int Order => 0;
-    public IReadOnlyList<string> DependsOn => new[] { nameof(PositiveRule) };
+    public IReadOnlyList<string> DependsOn => [nameof(PositiveRule)];
     public HookPoint HookPoint => HookPoint.BeforeRule;
     public RuleType Type => RuleType.Validation;
 
@@ -17,7 +17,7 @@ public sealed class EvenRule : IRule<int>
 
     public Task<RuleResult> EvaluateAsync(int context, FactBag facts, CancellationToken cancellationToken = default)
     {
-        bool result = context % 2 == 0;
+        var result = context % 2 == 0;
         facts["even"] = result;
         return Task.FromResult(result ? RuleResult.Passed() : RuleResult.Failure("Number must be even"));
     }

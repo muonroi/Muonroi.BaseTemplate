@@ -14,14 +14,14 @@ public class AppPermissionProvider : IPermissionProvider
         {
             GroupName = "Administration",
             GroupDisplayName = "Administration",
-            Permissions = new[]
-            {
+            Permissions =
+            [
                 "Admin_Auth_Dashboard",
                 "Admin_Roles_View",
                 "Admin_Roles_Create",
                 "Admin_Roles_Edit",
                 "Admin_Roles_Users"
-            }
+            ]
         };
 
         // Users group (example)
@@ -29,10 +29,10 @@ public class AppPermissionProvider : IPermissionProvider
         {
             GroupName = "Users",
             GroupDisplayName = "User Management",
-            Permissions = new[]
-            {
+            Permissions =
+            [
                 "Users_Manage"
-            }
+            ]
         };
 
         // Rules group
@@ -40,10 +40,10 @@ public class AppPermissionProvider : IPermissionProvider
         {
             GroupName = "Rules",
             GroupDisplayName = "Rules",
-            Permissions = new[]
-            {
+            Permissions =
+            [
                 "Rules_Configure"
-            }
+            ]
         };
     }
 }

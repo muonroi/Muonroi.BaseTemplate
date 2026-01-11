@@ -10,7 +10,7 @@ public sealed class ContainerExistenceRule(IContainerExistenceGrpcClient grpcCli
 
     public string Code => nameof(ContainerExistenceRule);
     public int Order => 0;
-    public IReadOnlyList<string> DependsOn => Array.Empty<string>();
+    public IReadOnlyList<string> DependsOn => [];
     public HookPoint HookPoint => HookPoint.BeforeRule;
     public RuleType Type => RuleType.Validation;
 
@@ -19,7 +19,7 @@ public sealed class ContainerExistenceRule(IContainerExistenceGrpcClient grpcCli
 
     public async Task<RuleResult> EvaluateAsync(CreateContainerCommand context, FactBag facts, CancellationToken cancellationToken = default)
     {
-        bool exists = await _grpcClient.ExistsAsync(context.Code, cancellationToken).ConfigureAwait(false);
+        var exists = await _grpcClient.ExistsAsync(context.Code, cancellationToken).ConfigureAwait(false);
         return exists ? RuleResult.Failure("Container already exists.") : RuleResult.Passed();
     }
 }

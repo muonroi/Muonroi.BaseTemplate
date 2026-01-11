@@ -17,7 +17,7 @@
                 return result;
             }
 
-            MResponse<string> tokenIsValid = await authenticateRepository.ValidateTokenValidity(AuthContext.TokenValidityKey, cancellationToken);
+            var tokenIsValid = await authenticateRepository.ValidateTokenValidity(AuthContext.TokenValidityKey, cancellationToken);
 
             if (!tokenIsValid.IsOk || string.IsNullOrEmpty(tokenIsValid.Result))
             {
@@ -25,7 +25,7 @@
                 return result;
             }
 
-            MResponse<RefreshTokenResponseModel> newToken = await authenticateRepository.RefreshToken(
+            var newToken = await authenticateRepository.RefreshToken(
                 new RefreshTokenRequestModel { AccessToken = AuthContext.AccessToken, RefreshToken = tokenIsValid.Result }, cancellationToken);
 
             if (!newToken.IsOk)

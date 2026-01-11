@@ -7,7 +7,7 @@ public class RulesController(IMediator mediator, ILogger logger, IMapper mapper)
     [AllowAnonymous]
     public async Task<IActionResult> Evaluate(int value, CancellationToken cancellationToken)
     {
-        MResponse<FactBag> response = await Mediator
+        var response = await Mediator
             .Send(new EvaluateNumberQuery(value), cancellationToken)
             .ConfigureAwait(false);
         return response.GetActionResult();

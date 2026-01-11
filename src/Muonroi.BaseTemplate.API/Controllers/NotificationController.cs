@@ -6,7 +6,7 @@ namespace Muonroi.BaseTemplate.API.Controllers
         [Permission<Permission>(Permission.Notification_Create)]
         public async Task<IActionResult> Create([FromBody] CreateNotificationCommand command, CancellationToken cancellationToken)
         {
-            MResponse<NotificationDto> result = await Mediator.Send(command, cancellationToken).ConfigureAwait(false);
+            var result = await Mediator.Send(command, cancellationToken).ConfigureAwait(false);
             return result.GetActionResult();
         }
 
@@ -14,7 +14,7 @@ namespace Muonroi.BaseTemplate.API.Controllers
         [Permission<Permission>(Permission.Notification_GetAll)]
         public async Task<IActionResult> Get(CancellationToken cancellationToken)
         {
-            MResponse<IEnumerable<NotificationDto>> result = await Mediator.Send(new GetNotificationsQuery(), cancellationToken).ConfigureAwait(false);
+            var result = await Mediator.Send(new GetNotificationsQuery(), cancellationToken).ConfigureAwait(false);
             return result.GetActionResult();
         }
     }

@@ -9,8 +9,8 @@ namespace Muonroi.BaseTemplate.API.Application.Commands.Notification
 
         public async Task<MResponse<IEnumerable<NotificationDto>>> Handle(GetNotificationsQuery request, CancellationToken cancellationToken)
         {
-            List<NotificationEntity>? entities = await _query.GetAllAsync().ConfigureAwait(false);
-            IEnumerable<NotificationDto> dtos = entities?.Select(e => new NotificationDto
+            var entities = await _query.GetAllAsync().ConfigureAwait(false);
+            var dtos = entities?.Select(e => new NotificationDto
             {
                 Id = e.Id,
                 Icon = e.Icon,
