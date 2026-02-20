@@ -1,10 +1,10 @@
 ﻿namespace Muonroi.BaseTemplate.API.Controllers
 {
     [ApiVersion("1.0")]
-    public class AuthController(
+public class AuthController(
     IMediator mediator,
     IAuthService<Permission, BaseTemplateDbContext> authService,
-    IPermissionService<Permission, BaseTemplateDbContext> permissionService)
+    IPermissionService<Permission> permissionService)
     : MAuthControllerBase<Permission, BaseTemplateDbContext>(authService, permissionService)
     {
         public override async Task<IActionResult> Login(

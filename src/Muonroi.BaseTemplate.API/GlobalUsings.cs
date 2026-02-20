@@ -40,6 +40,7 @@ global using Muonroi.BuildingBlock.External.Logging;
 global using Muonroi.BuildingBlock.External.Mapper;
 global using Muonroi.BuildingBlock.External.Mediator.Interfaces;
 global using Muonroi.BuildingBlock.External.Messaging;
+global using Muonroi.BuildingBlock.External.Middleware;
 global using Muonroi.BuildingBlock.External.Response;
 global using Muonroi.BuildingBlock.External.Services;
 global using Muonroi.BuildingBlock.External.Tenant;

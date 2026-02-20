@@ -75,8 +75,15 @@ public static class StartupExtensions
         await app.UseServiceDiscoveryAsync(builder.Environment);
         _ = app.UseRouting();
         _ = app.UseCors("MAllowDomains");
-        _ = app.UseMiddleware<TenantContextMiddleware>();
-        _ = app.UseDefaultMiddleware<BaseTemplateDbContext, Permission>();
+        _ = app.UseDefaultMiddleware();
+        _ = app.UseWhen(ctx => !ctx.Request.Path.StartsWithSegments("/swagger"),
+            branch => { _ = branch.UseMiddleware<JwtMiddleware>(); });
+
+        var multiTenantEnabled = configuration.GetValue("MultiTenantConfigs:Enabled", false);
+        if (multiTenantEnabled)
+        {
+            _ = app.UseMiddleware<TenantContextMiddleware>();
+        }
         _ = app.AddLocalization(assembly);
         _ = app.UseAuthentication();
         _ = app.UseAuthorization();

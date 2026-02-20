@@ -19,7 +19,7 @@
 
             MResponse<string> tokenIsValid = await authenticateRepository.ValidateTokenValidity(AuthContext.TokenValidityKey, cancellationToken);
 
-            if (!tokenIsValid.IsOK || string.IsNullOrEmpty(tokenIsValid.Result))
+            if (!tokenIsValid.IsOk || string.IsNullOrEmpty(tokenIsValid.Result))
             {
                 result.AddErrorMessage("InvalidCredentials");
                 return result;
@@ -28,7 +28,7 @@
             MResponse<RefreshTokenResponseModel> newToken = await authenticateRepository.RefreshToken(
                 new RefreshTokenRequestModel { AccessToken = AuthContext.AccessToken, RefreshToken = tokenIsValid.Result }, cancellationToken);
 
-            if (!newToken.IsOK)
+            if (!newToken.IsOk)
             {
                 result.AddErrorMessage("InvalidCredentials");
                 return result;

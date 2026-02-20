@@ -13,7 +13,7 @@ namespace Muonroi.BaseTemplate.API.Application.Commands.Login
             MResponse<LoginResponseModel> authResult = await _authenticateRepository.Login(
                 new LoginRequestModel { Username = request.Username, Password = request.Password }, cancellationToken);
 
-            if (!authResult.IsOK)
+            if (!authResult.IsOk)
             {
                 result.AddErrors(authResult.ErrorMessages);
                 return result;

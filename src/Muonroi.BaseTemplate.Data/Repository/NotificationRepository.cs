@@ -1,7 +1,7 @@
 namespace Muonroi.BaseTemplate.Data.Repository
 {
-    public class NotificationRepository(BaseTemplateDbContext dbContext, MAuthenticateInfoContext authContext)
-        : MRepository<NotificationEntity>(dbContext, authContext), INotificationRepository
+    public class NotificationRepository(BaseTemplateDbContext dbContext, MAuthenticateInfoContext authContext, ILicenseGuard licenseGuard)
+        : MRepository<NotificationEntity>(dbContext, authContext, licenseGuard), INotificationRepository
     {
     }
 }

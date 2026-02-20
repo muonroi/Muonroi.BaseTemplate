@@ -10,6 +10,22 @@
     "type": "solution" 
   },
   "sourceName": "Muonroi.BaseTemplate", 
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            ".git/**",
+            ".idea/**",
+            "images/**",
+            "Properties/**",
+            "GlobalUsings.cs",
+            "Muonroi.BaseTemplate.csproj"
+          ]
+        }
+      ]
+    }
+  ],
   "primaryOutputs": [
     {
       "path": "Muonroi.BaseTemplate.sln"
