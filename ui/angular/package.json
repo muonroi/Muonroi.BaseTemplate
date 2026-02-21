@@ -3,7 +3,11 @@
   "private": true,
   "version": "0.1.0",
   "description": "Muonroi Angular shell starter",
+  "dependencies": {
+    "@muonroi/ui-engine-angular": "^0.1.0",
+    "@muonroi/ui-engine-core": "^0.1.0"
+  },
   "scripts": {
-    "start": "echo 'Integrate into your Angular workspace and wire providers from src/muonroi/m-ui-runtime.ts'"
+    "start": "echo 'Install dependencies then map routes/menu from src/muonroi/m-ui-runtime.ts using backend ui-engine metadata'"
   }
 }

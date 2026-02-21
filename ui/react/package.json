@@ -3,7 +3,11 @@
   "private": true,
   "version": "0.1.0",
   "description": "Muonroi React shell starter",
+  "dependencies": {
+    "@muonroi/ui-engine-core": "^0.1.0",
+    "@muonroi/ui-engine-react": "^0.1.0"
+  },
   "scripts": {
-    "start": "echo 'Integrate into your React app and wire runtime from src/muonroi/m-ui-runtime.ts'"
+    "start": "echo 'Install dependencies then build React UI model from src/muonroi/m-ui-runtime.ts and backend ui-engine metadata'"
   }
 }

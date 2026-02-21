@@ -1,12 +1,19 @@
 # React Shell Starter
 
-This starter provides Muonroi runtime primitives:
+This starter provides bindings to Muonroi UI engine packages:
 
-- `createMApiClient`: fetch wrapper with auth/tenant/correlation headers
-- `MUiManifestClient`: load backend UI manifest
-- `mCanRender` / `mCanExecute`
+- `@muonroi/ui-engine-core`
+- `@muonroi/ui-engine-react`
+- runtime exports from `src/muonroi/m-ui-runtime.ts`
 
 Backend endpoint expected:
 
-- `GET /api/v1/auth/ui-manifest/{userId}`
-- `GET /api/v1/auth/ui-manifest/current` (recommended)
+- `GET /api/v1/auth/ui-engine/{userId}`
+- `GET /api/v1/auth/ui-engine/current` (recommended)
+
+Local package option (when package is not published yet):
+
+```bash
+npm install file:/absolute/path/Muonroi.Ui.Engine/packages/m-ui-engine-core \
+  file:/absolute/path/Muonroi.Ui.Engine/packages/m-ui-engine-react
+```

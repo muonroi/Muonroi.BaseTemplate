@@ -5,4 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Muonroi.MvcShell</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Muonroi.Ui.Engine.Mvc" Version="0.1.0" />
+  </ItemGroup>
 </Project>
