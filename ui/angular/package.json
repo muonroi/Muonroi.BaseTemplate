@@ -1,0 +1,9 @@
+{
+  "name": "muonroi-angular-shell",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Muonroi Angular shell starter",
+  "scripts": {
+    "start": "echo 'Integrate into your Angular workspace and wire providers from src/muonroi/m-ui-runtime.ts'"
+  }
+}

@@ -58,13 +58,14 @@ dotnet new list | grep "mr-base-sln"
 ### Create new project
 
 ```bash
-dotnet new mr-base-sln -n <ProjectName> [-C <ClassName>]
+dotnet new mr-base-sln -n <ProjectName> [-C <ClassName>] [--ui <angular|react|mvc|none>]
 ```
 
 | Parameter | Short | Description | Default |
 |-----------|-------|-------------|---------|
 | `--name` | `-n` | Solution/project name | (required) |
 | `--ClassName` | `-C` | Base name for classes (DbContext, etc.) | `BaseTemplate` |
+| `--UiFramework` | `--ui` | Frontend shell scaffold (`angular`, `react`, `mvc`, `none`) | `none` |
 
 ### Examples
 
@@ -75,6 +76,9 @@ dotnet new mr-base-sln -n MyApp
 # With custom class name
 dotnet new mr-base-sln -n TruyenTM -C TruyenTM
 # Generates: TruyenTMDbContext, TruyenTMRepository, etc.
+
+# With Angular shell starter
+dotnet new mr-base-sln -n MyApp -C MyApp --ui angular
 ```
 
 ## Project Structure

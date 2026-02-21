@@ -1,0 +1,9 @@
+{
+  "name": "muonroi-react-shell",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Muonroi React shell starter",
+  "scripts": {
+    "start": "echo 'Integrate into your React app and wire runtime from src/muonroi/m-ui-runtime.ts'"
+  }
+}

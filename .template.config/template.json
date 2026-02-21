@@ -22,6 +22,30 @@
             "GlobalUsings.cs",
             "Muonroi.BaseTemplate.csproj"
           ]
+        },
+        {
+          "condition": "(ui != \"angular\")",
+          "exclude": [
+            "ui/angular/**"
+          ]
+        },
+        {
+          "condition": "(ui != \"react\")",
+          "exclude": [
+            "ui/react/**"
+          ]
+        },
+        {
+          "condition": "(ui != \"mvc\")",
+          "exclude": [
+            "ui/mvc/**"
+          ]
+        },
+        {
+          "condition": "(ui == \"none\")",
+          "exclude": [
+            "ui/**"
+          ]
         }
       ]
     }
@@ -41,6 +65,32 @@
       "displayName": "Base Name for Classes",
       "description": "name of class: DbContext, Service, etc.",
       "defaultValue": "BaseTemplate"
+    },
+    "ui": {
+      "type": "parameter",
+      "datatype": "choice",
+      "shortName": "ui",
+      "defaultValue": "none",
+      "displayName": "Frontend UI Shell",
+      "description": "Select frontend shell scaffold: angular, react, mvc, or none",
+      "choices": [
+        {
+          "choice": "none",
+          "description": "No frontend shell"
+        },
+        {
+          "choice": "angular",
+          "description": "Angular shell with Muonroi UI runtime starter"
+        },
+        {
+          "choice": "react",
+          "description": "React shell with Muonroi UI runtime starter"
+        },
+        {
+          "choice": "mvc",
+          "description": "ASP.NET Core MVC shell for server-side rendering/BFF"
+        }
+      ]
     }
   }
 }
