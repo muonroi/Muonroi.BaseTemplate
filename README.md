@@ -229,14 +229,14 @@ dotnet ef database update \
 
 ## Documentation
 
-Synced references from `MuonroiBuildingBlock/docs` (private distribution):
+Private docs are centralized in `Muonroi.Docs`:
 
-- [License Capability Model](docs/license-capability-model.md)
-- [Control Plane MVP](docs/control-plane-mvp.md)
-- [Enterprise Secure Profile (E2)](docs/enterprise-secure-profile-e2.md)
-- [Enterprise Centralized Authorization (E3)](docs/enterprise-centralized-authorization-e3.md)
-- [Enterprise Compliance (E4)](docs/enterprise-compliance-e4.md)
-- [Enterprise Operations (E5)](docs/enterprise-operations-e5.md)
+- [License Capability Model](https://github.com/muonroi/Muonroi.Docs/blob/main/docs/enterprise/license-capability-model.md)
+- [Control Plane MVP](https://github.com/muonroi/Muonroi.Docs/blob/main/docs/enterprise/control-plane-mvp.md)
+- [Enterprise Secure Profile (E2)](https://github.com/muonroi/Muonroi.Docs/blob/main/docs/enterprise/enterprise-secure-profile-e2.md)
+- [Enterprise Centralized Authorization (E3)](https://github.com/muonroi/Muonroi.Docs/blob/main/docs/enterprise/enterprise-centralized-authorization-e3.md)
+- [Enterprise Compliance (E4)](https://github.com/muonroi/Muonroi.Docs/blob/main/docs/enterprise/enterprise-compliance-e4.md)
+- [Enterprise Operations (E5)](https://github.com/muonroi/Muonroi.Docs/blob/main/docs/enterprise/enterprise-operations-e5.md)
 
 ## Troubleshooting
 
