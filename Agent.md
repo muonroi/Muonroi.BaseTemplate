@@ -10,6 +10,37 @@ This file defines the unified working rules for Muonroi repositories.
 - `Muonroi.Microservices.Template`
 - `Muonroi.Docs` (documentation hub)
 
+## Workspace Layout
+
+- Keep project root (`D:\Personal\Project`) clean. Only these top-level folders are allowed:
+1. Repositories: `MuonroiBuildingBlock`, `Muonroi.BaseTemplate`, `Muonroi.Modular.Template`, `Muonroi.Microservices.Template`, `Muonroi.Docs`
+2. Local package feeds: `LocalNuget`, `LocalNuGetFeed`
+3. Temporary workspace: `_tmp`
+- Never create ad-hoc folders at root for debug/verify.
+- Generated verification projects must be placed under:
+1. `D:\Personal\Project\_tmp\verify-runs\<run-id>`
+- Template snapshots/backups must be placed under:
+1. `D:\Personal\Project\_tmp\template-snapshots\<snapshot-id>`
+
+## Debug Artifact Convention
+
+- Debug scripts must be stored in:
+1. `D:\Personal\Project\_tmp\scripts\debug`
+- Runtime logs and captured outputs must be stored in:
+1. `D:\Personal\Project\_tmp\logs\<task-id>`
+- Intermediate debug results (json/txt/csv) must be stored in:
+1. `D:\Personal\Project\_tmp\results\<task-id>`
+- Forbidden locations for debug artifacts:
+1. Project root (`D:\Personal\Project`)
+2. Repository root of any source repo
+3. Template root folders
+- File naming convention:
+1. Scripts: `<task>_<yyyyMMdd_HHmmss>.ps1`
+2. Logs: `<task>.out.log`, `<task>.err.log`
+3. Data: `<task>.json` / `<task>.txt`
+- Cleanup rule:
+1. After finishing a task, move useful evidence to `_tmp\results\<task-id>` and remove redundant debug files.
+
 ## Core Rules
 
 - No quick workaround. Always do research first, then plan, then implement.
