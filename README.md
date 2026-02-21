@@ -155,6 +155,34 @@ Toggle optional features to reduce startup time:
 }
 ```
 
+### Enterprise Operations (E4/E5)
+
+Enable management endpoints only when needed:
+
+```json
+{
+  "EnterpriseOps": {
+    "EnableComplianceEndpoints": false,
+    "EnableOperationsEndpoints": false
+  }
+}
+```
+
+When enabled:
+- `EnableComplianceEndpoints`: maps `MapMComplianceEndpoints()`
+- `EnableOperationsEndpoints`: maps `MapMEnterpriseOperationsEndpoints()`
+
+Ops scripts included in `scripts/`:
+- `check-enterprise-upgrade-compat.ps1`
+- `check-enterprise-slo-gates.ps1`
+
+SLO presets included in `deploy/enterprise/slo-presets/`:
+- `balanced.json`
+- `strict.json`
+- `regulated.json`
+
+Note: if your `Muonroi.BuildingBlock` package version does not include E4/E5 endpoint extensions yet, these toggles are ignored safely.
+
 ## Database Migrations
 
 ### Using helper script (recommended)

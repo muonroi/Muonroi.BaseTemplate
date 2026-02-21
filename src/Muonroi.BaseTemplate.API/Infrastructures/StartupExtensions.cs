@@ -88,6 +88,24 @@ public static class StartupExtensions
         _ = app.UseAuthentication();
         _ = app.UseAuthorization();
         _ = app.ConfigureEndpoints();
+        
+        var enableComplianceEndpoints = configuration.GetValue("EnterpriseOps:EnableComplianceEndpoints", false);
+        var enableOperationsEndpoints = configuration.GetValue("EnterpriseOps:EnableOperationsEndpoints", false);
+        if (enableComplianceEndpoints)
+        {
+            _ = TryMapEnterpriseEndpoint(
+                app,
+                "Muonroi.BuildingBlock.Shared.Compliance.MComplianceEndpointExtensions",
+                "MapMComplianceEndpoints");
+        }
+
+        if (enableOperationsEndpoints)
+        {
+            _ = TryMapEnterpriseEndpoint(
+                app,
+                "Muonroi.BuildingBlock.Shared.Operations.MEnterpriseOperationsEndpointExtensions",
+                "MapMEnterpriseOperationsEndpoints");
+        }
 
         var ensureCreatedFallback = configuration.GetValue("FeatureFlags:UseEnsureCreatedFallback", false);
         if (ensureCreatedFallback)
@@ -100,5 +118,25 @@ public static class StartupExtensions
 
         _ = app.MigrateDatabase<BaseTemplateDbContext>();
         await Seed.AdminRoleSeeder.SeedAsync<BaseTemplateDbContext>(app.Services);
+    }
+
+    private static bool TryMapEnterpriseEndpoint(WebApplication app, string extensionTypeName, string methodName)
+    {
+        var assembly = AppDomain.CurrentDomain.GetAssemblies()
+            .FirstOrDefault(x => x.GetName().Name == "Muonroi.BuildingBlock");
+        var extensionType = assembly?.GetType(extensionTypeName, throwOnError: false);
+        var method = extensionType?.GetMethod(
+            methodName,
+            BindingFlags.Public | BindingFlags.Static,
+            binder: null,
+            [typeof(IEndpointRouteBuilder)],
+            modifiers: null);
+        if (method == null)
+        {
+            return false;
+        }
+
+        _ = method.Invoke(null, [app]);
+        return true;
     }
 }
