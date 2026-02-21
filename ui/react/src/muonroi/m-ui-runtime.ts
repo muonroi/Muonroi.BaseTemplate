@@ -77,6 +77,10 @@ export class MUiManifestClient {
   load(userId: string) {
     return this.fetcher<MUiManifest>(`/auth/ui-manifest/${userId}`);
   }
+
+  loadCurrent() {
+    return this.fetcher<MUiManifest>('/auth/ui-manifest/current');
+  }
 }
 
 export function mCanRender(item: MUiManifestItem): boolean {

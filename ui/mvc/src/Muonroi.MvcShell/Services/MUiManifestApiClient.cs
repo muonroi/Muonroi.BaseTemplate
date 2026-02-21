@@ -8,4 +8,9 @@ public sealed class MUiManifestApiClient(HttpClient httpClient)
     {
         return await httpClient.GetFromJsonAsync<MUiManifest>($"/api/v1/auth/ui-manifest/{userId}", cancellationToken);
     }
+
+    public async Task<MUiManifest?> LoadCurrentAsync(CancellationToken cancellationToken)
+    {
+        return await httpClient.GetFromJsonAsync<MUiManifest>("/api/v1/auth/ui-manifest/current", cancellationToken);
+    }
 }

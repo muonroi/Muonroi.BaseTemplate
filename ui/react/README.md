@@ -9,3 +9,4 @@ This starter provides Muonroi runtime primitives:
 Backend endpoint expected:
 
 - `GET /api/v1/auth/ui-manifest/{userId}`
+- `GET /api/v1/auth/ui-manifest/current` (recommended)

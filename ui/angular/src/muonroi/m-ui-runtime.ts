@@ -106,6 +106,11 @@ export class MUiManifestService {
     const url = `${baseApiUrl}/auth/ui-manifest/${userId}`;
     return this.http.get<MUiManifest>(url);
   }
+
+  loadCurrent(baseApiUrl: string) {
+    const url = `${baseApiUrl}/auth/ui-manifest/current`;
+    return this.http.get<MUiManifest>(url);
+  }
 }
 
 export function mCanRender(item: MUiManifestItem): boolean {

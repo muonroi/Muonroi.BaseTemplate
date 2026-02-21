@@ -17,5 +17,11 @@ app.MapGet("/ui/manifest/{userId:guid}", async (Guid userId, MUiManifestApiClien
     return manifest is null ? Results.NotFound() : Results.Ok(manifest);
 });
 
+app.MapGet("/ui/manifest/current", async (MUiManifestApiClient client, CancellationToken ct) =>
+{
+    var manifest = await client.LoadCurrentAsync(ct);
+    return manifest is null ? Results.NotFound() : Results.Ok(manifest);
+});
+
 app.MapDefaultControllerRoute();
 app.Run();
