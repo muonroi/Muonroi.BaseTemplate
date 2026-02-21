@@ -5,9 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Muonroi.BuildingBlock" Version="1.9.10" />
-    <PackageReference Include="Muonroi.RuleEngine.Abstractions" Version="1.9.10" />
-    <PackageReference Include="Muonroi.RuleEngine.Core" Version="1.9.10" />
+    <PackageReference Include="Muonroi.BuildingBlock" Version="1.9.11" />
+    <PackageReference Include="Muonroi.RuleEngine.Abstractions" Version="1.9.11" />
+    <PackageReference Include="Muonroi.RuleEngine.Core" Version="1.9.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

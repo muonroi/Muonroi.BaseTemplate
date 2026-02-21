@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Muonroi.BuildingBlock" Version="1.9.10" />
+    <PackageReference Include="Muonroi.BuildingBlock" Version="1.9.11" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
