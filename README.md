@@ -234,6 +234,12 @@ Set `"EnableEncryption": false` in appsettings.
 
 Disable unused features in `FeatureFlags`.
 
+## Edition Notes
+
+- Template package is MIT.
+- Generated projects run in Free mode by default (`LicenseConfigs:LicenseFilePath = null`).
+- If you enable premium modules in `FeatureFlags` (for example `UseGrpc`, `UseMessageBus`, strict multi-tenant/RBAC+ flows), provide a paid Muonroi license with matching feature keys.
+
 ## License
 
 MIT License. See [LICENSE.txt](LICENSE.txt) for details.
