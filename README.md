@@ -72,6 +72,13 @@ Generated UI shells use Muonroi hybrid UI engine:
 - Backend metadata endpoints: `GET /api/v1/auth/ui-engine/{userId}`, `GET /api/v1/auth/ui-engine/current`
 - FE runtime packages: `@muonroi/ui-engine-core`, `@muonroi/ui-engine-angular`, `@muonroi/ui-engine-react`
 - MVC runtime package: `Muonroi.Ui.Engine.Mvc`
+- Optional UI-kit adapter package: `@muonroi/ui-engine-primeng`
+
+Sync helper:
+
+```bash
+./scripts/sync-ui-engine.sh --ui-engine-path ../Muonroi.Ui.Engine --openapi http://localhost:5000/swagger/v1/swagger.json --framework all
+```
 
 ### Examples
 

@@ -17,3 +17,9 @@ Local package option (when package is not published yet):
 npm install file:/absolute/path/Muonroi.Ui.Engine/packages/m-ui-engine-core \
   file:/absolute/path/Muonroi.Ui.Engine/packages/m-ui-engine-angular
 ```
+
+PrimeNG option:
+
+```bash
+npm install file:/absolute/path/Muonroi.Ui.Engine/packages/m-ui-engine-primeng
+```

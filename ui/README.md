@@ -14,3 +14,4 @@ Hybrid upgrade:
 - Backend defines runtime metadata via `ui-engine` endpoints.
 - FE shells consume packages from `Muonroi.Ui.Engine` repository.
 - UI teams focus on UI/UX and theme; permission and behavior gates come from backend metadata.
+- Run `./scripts/sync-ui-engine.sh` after backend updates to refresh generated API clients and local UI engine packages.
